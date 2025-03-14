@@ -1,11 +1,10 @@
-
 default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   host: localhost
   database: wallet_transactional_system
-  username: postgres
+  username: root
   password: root
 
 development:

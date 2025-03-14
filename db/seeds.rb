@@ -3,10 +3,11 @@ if User.count <= 0
     name = Faker::Name.name
     parameterize = name.parameterize.gsub("-","_")
 
-    User.create({
+    User.create({ 
       full_name: name,
       email_address: "#{parameterize}@mailinator.com",
-      password: Digest::MD5.hexdigest(parameterize)
+      password: Digest::MD5.hexdigest(parameterize),
+      wallet_id: Wallet.create(address: SecureRandom.uuid, balance: 0).id
     })
   end
 end
@@ -16,7 +17,8 @@ if Team.count <= 0
   team_owner.each do |owner|
     Team.create({
       name: Faker::Esport.team,
-      user_id: owner.id
+      user_id: owner.id,
+      wallet_id: Wallet.create(address: SecureRandom.uuid, balance: 0).id
     })
   end
 end

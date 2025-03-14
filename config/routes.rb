@@ -3,4 +3,10 @@ Rails.application.routes.draw do
 
   resources :users
   resources :teams
+  resources :wallets do
+    collection do
+      post :topup
+      post :withdrawal
+    end
+  end
 end
